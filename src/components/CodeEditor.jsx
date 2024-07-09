@@ -1,25 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button, Container } from '@mui/material';
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../firebaseConfig';
 
 const CodeEditor = ({ code, setCode }) => {
   const [title, setTitle] = useState('');
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (title && code) {
-      try {
-        console.log("Submitting code:", { title, content: code });
-        const docRef = await addDoc(collection(db, 'codes'), {
-          title,
-          content: code
-        });
-        console.log("Document written with ID: ", docRef.id);
-        setTitle('');
-        setCode('');
-      } catch (e) {
-        console.error("Error adding document: ", e);
-      }
+      const existingCodes = JSON.parse(localStorage.getItem('codes')) || [];
+      const newCode = { title, content: code };
+      existingCodes.push(newCode);
+      localStorage.setItem('codes', JSON.stringify(existingCodes));
+      console.log("Code saved to local storage:", newCode);
+      setTitle('');
+      setCode('');
     } else {
       console.log("Title or code is missing.");
     }
