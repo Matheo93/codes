@@ -42,9 +42,9 @@ const CodeEditor = ({ code, setCode }) => {
           fullWidth
           value={code}
           onChange={(e) => setCode(e.target.value)}
-          style={{ backgroundColor: "#000", color: "#fff" }}
+          style={{ backgroundColor: "#000", color: "#fdf" }}
           InputProps={{
-            style: { color: "#fff" },
+            style: { color: "#dff" },
           }}
         />
         <Typography
