@@ -23,12 +23,16 @@ const CodeDisplay = () => {
 
   return (
     <Container>
-      {codes.map((code) => (
-        <Paper key={code.id} style={{ padding: '20px', marginTop: '20px', whiteSpace: 'pre-wrap' }}>
-          <Typography variant="h6">{code.title}</Typography>
-          <pre>{code.content}</pre>
-        </Paper>
-      ))}
+      {codes.length > 0 ? (
+        codes.map((code) => (
+          <Paper key={code.id} style={{ padding: '20px', marginTop: '20px', whiteSpace: 'pre-wrap' }}>
+            <Typography variant="h6">{code.title}</Typography>
+            <pre>{code.content}</pre>
+          </Paper>
+        ))
+      ) : (
+        <Typography variant="body1">No code snippets found.</Typography>
+      )}
     </Container>
   );
 };

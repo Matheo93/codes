@@ -19,6 +19,8 @@ const CodeEditor = ({ code, setCode }) => {
       } catch (e) {
         console.error("Error adding document: ", e);
       }
+    } else {
+      console.log("Title or code is missing.");
     }
   };
 
