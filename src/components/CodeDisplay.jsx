@@ -17,8 +17,8 @@ const CodeDisplay = () => {
           <Paper
             key={index}
             style={{
-              padding: "20px",
-              marginTop: "20px",
+              padding: "10px",
+              marginTop: "10px",
               whiteSpace: "pre-wrap",
             }}
           >
