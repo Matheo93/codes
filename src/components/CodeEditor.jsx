@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { TextField, Button, Container } from '@mui/material';
 
 const CodeEditor = ({ code, setCode }) => {
@@ -11,6 +11,7 @@ const CodeEditor = ({ code, setCode }) => {
       existingCodes.push(newCode);
       localStorage.setItem('codes', JSON.stringify(existingCodes));
       console.log("Code saved to local storage:", newCode);
+      console.log("All codes in local storage:", existingCodes);
       setTitle('');
       setCode('');
     } else {

@@ -6,7 +6,7 @@ const CodeDisplay = () => {
 
   useEffect(() => {
     const storedCodes = JSON.parse(localStorage.getItem('codes')) || [];
-    console.log("Fetched codes from local storage:", storedCodes);
+    console.log("Fetched codes from local storage on load:", storedCodes);
     setCodes(storedCodes);
   }, []);
 
