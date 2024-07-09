@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import CodeEditor from './components/CodeEditor';
-import CodeDisplay from './components/CodeDisplay';
+import React, { useState } from "react";
+import CodeEditor from "./components/CodeEditor";
+import CodeDisplay from "./components/CodeDisplay";
 
 function App() {
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState("");
 
   return (
     <div className="App">

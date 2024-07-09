@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Paper, Typography, Container } from '@mui/material';
+import React, { useEffect, useState } from "react";
+import { Paper, Typography, Container } from "@mui/material";
 
 const CodeDisplay = () => {
   const [codes, setCodes] = useState([]);
 
   useEffect(() => {
-    const storedCodes = JSON.parse(localStorage.getItem('codes')) || [];
+    const storedCodes = JSON.parse(localStorage.getItem("codes")) || [];
     console.log("Fetched codes from local storage on load:", storedCodes);
     setCodes(storedCodes);
   }, []);
@@ -14,7 +14,14 @@ const CodeDisplay = () => {
     <Container>
       {codes.length > 0 ? (
         codes.map((code, index) => (
-          <Paper key={index} style={{ padding: '20px', marginTop: '20px', whiteSpace: 'pre-wrap' }}>
+          <Paper
+            key={index}
+            style={{
+              padding: "20px",
+              marginTop: "20px",
+              whiteSpace: "pre-wrap",
+            }}
+          >
             <Typography variant="h6">{code.title}</Typography>
             <pre>{code.content}</pre>
           </Paper>
