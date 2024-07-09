@@ -9,6 +9,7 @@ const CodeEditor = ({ code, setCode }) => {
   const handleSubmit = async () => {
     if (title && code) {
       try {
+        console.log("Submitting code:", { title, content: code });
         const docRef = await addDoc(collection(db, 'codes'), {
           title,
           content: code
@@ -43,7 +44,14 @@ const CodeEditor = ({ code, setCode }) => {
         onChange={(e) => setCode(e.target.value)}
         style={{ marginBottom: '20px' }}
       />
-      <Button variant="contained" color="primary" onClick={handleSubmit}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          console.log("Save button clicked");
+          handleSubmit();
+        }}
+      >
         Save Code
       </Button>
     </Container>
