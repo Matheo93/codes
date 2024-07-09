@@ -1,15 +1,24 @@
+import React from 'react';
+import { TextField, Button, Container } from '@mui/material';
 
-    import React from 'react';
+const CodeEditor = ({ code, setCode }) => {
+  return (
+    <Container>
+      <TextField
+        label="Enter your code"
+        multiline
+        rows={4}
+        variant="outlined"
+        fullWidth
+        value={code}
+        onChange={(e) => setCode(e.target.value)}
+        style={{ marginBottom: '20px' }}
+      />
+      <Button variant="contained" color="primary" onClick={() => console.log('Code saved')}>
+        Save Code
+      </Button>
+    </Container>
+  );
+};
 
-    function CodeEditor({ code, setCode }) {
-      return (
-        <textarea
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
-          placeholder="Write your code here..."
-        />
-      );
-    }
-
-    export default CodeEditor;
-    
+export default CodeEditor;

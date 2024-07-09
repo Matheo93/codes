@@ -1,11 +1,15 @@
+import React from 'react';
+import { Paper, Typography, Container } from '@mui/material';
 
-    import React from 'react';
-
-    function CodeDisplay({ code }) {
-      return (
+const CodeDisplay = ({ code }) => {
+  return (
+    <Container>
+      <Paper style={{ padding: '20px', marginTop: '20px', whiteSpace: 'pre-wrap' }}>
+        <Typography variant="h6">Code Snippet:</Typography>
         <pre>{code}</pre>
-      );
-    }
+      </Paper>
+    </Container>
+  );
+};
 
-    export default CodeDisplay;
-    
+export default CodeDisplay;
