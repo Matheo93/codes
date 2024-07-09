@@ -8,12 +8,17 @@ const CodeEditor = ({ code, setCode }) => {
 
   const handleSubmit = async () => {
     if (title && code) {
-      await addDoc(collection(db, 'codes'), {
-        title,
-        content: code
-      });
-      setTitle('');
-      setCode('');
+      try {
+        const docRef = await addDoc(collection(db, 'codes'), {
+          title,
+          content: code
+        });
+        console.log("Document written with ID: ", docRef.id);
+        setTitle('');
+        setCode('');
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
     }
   };
 

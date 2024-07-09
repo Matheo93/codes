@@ -8,8 +8,14 @@ const CodeDisplay = () => {
 
   useEffect(() => {
     const fetchCodes = async () => {
-      const querySnapshot = await getDocs(collection(db, 'codes'));
-      setCodes(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+      try {
+        const querySnapshot = await getDocs(collection(db, 'codes'));
+        const codesArray = querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+        console.log("Fetched codes: ", codesArray);
+        setCodes(codesArray);
+      } catch (e) {
+        console.error("Error fetching documents: ", e);
+      }
     };
 
     fetchCodes();
