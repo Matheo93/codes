@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
-import { TextField, Button, Container } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { TextField, Button, Container, Typography, Box } from '@mui/material';
 
 const CodeEditor = ({ code, setCode }) => {
   const [title, setTitle] = useState('');
+  const [lineCount, setLineCount] = useState(0);
+
+  useEffect(() => {
+    setLineCount(code.split('\n').length);
+  }, [code]);
 
   const handleSubmit = () => {
     if (title && code) {
@@ -28,16 +33,34 @@ const CodeEditor = ({ code, setCode }) => {
         onChange={(e) => setTitle(e.target.value)}
         style={{ marginBottom: '20px' }}
       />
-      <TextField
-        label="Enter your code"
-        multiline
-        rows={4}
-        variant="outlined"
-        fullWidth
-        value={code}
-        onChange={(e) => setCode(e.target.value)}
-        style={{ marginBottom: '20px' }}
-      />
+      <Box sx={{ position: 'relative', marginBottom: '20px' }}>
+        <TextField
+          label="Enter your code"
+          multiline
+          rows={20}
+          variant="outlined"
+          fullWidth
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          style={{ backgroundColor: '#000', color: '#fff' }}
+          InputProps={{
+            style: { color: '#fff' },
+          }}
+        />
+        <Typography
+          variant="body2"
+          sx={{
+            position: 'absolute',
+            bottom: 0,
+            right: 0,
+            padding: '10px',
+            color: '#fff',
+            backgroundColor: '#000',
+          }}
+        >
+          {lineCount} {lineCount === 1 ? 'line' : 'lines'}
+        </Typography>
+      </Box>
       <Button
         variant="contained"
         color="primary"
@@ -45,6 +68,7 @@ const CodeEditor = ({ code, setCode }) => {
           console.log("Save button clicked");
           handleSubmit();
         }}
+        style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }}
       >
         Save Code
       </Button>
