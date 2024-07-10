@@ -1,33 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { Paper, Typography, Container } from "@mui/material";
+import React, { useEffect, useState } from 'react';
+import { Container, Typography, Paper } from '@mui/material';
 
 const CodeDisplay = () => {
+  // useState pour gérer l'état local des codes récupérés depuis le local storage.
   const [codes, setCodes] = useState([]);
 
+  // useEffect pour récupérer les codes du local storage une fois que le composant est monté.
   useEffect(() => {
-    const storedCodes = JSON.parse(localStorage.getItem("codes")) || [];
-    console.log("Fetched codes from local storage on load:", storedCodes);
-    setCodes(storedCodes);
+    const savedCodes = JSON.parse(localStorage.getItem('codes')) || [];
+    setCodes(savedCodes);
+    console.log("Retrieved codes from local storage:", savedCodes);
   }, []);
 
   return (
     <Container>
-      {codes.length > 0 ? (
+      {codes.length === 0 ? (
+        <Typography variant="h6">No codes available</Typography>
+      ) : (
         codes.map((code, index) => (
-          <Paper
-            key={index}
-            style={{
-              padding: "10px",
-              marginTop: "10px",
-              whiteSpace: "pre-wrap",
-            }}
-          >
+          <Paper key={index} style={{ padding: '10px', marginBottom: '10px' }}>
             <Typography variant="h6">{code.title}</Typography>
-            <pre>{code.content}</pre>
+            <Typography>{code.content}</Typography>
           </Paper>
         ))
-      ) : (
-        <Typography variant="body1">No code snippets found.</Typography>
       )}
     </Container>
   );
