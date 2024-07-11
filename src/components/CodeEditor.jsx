@@ -29,7 +29,9 @@ const CodeEditor = () => {
     if (title && content) {
       const newCode = { id: id || Math.random().toString(36).substring(7), title, content };
       addCode(newCode);
-      navigate(`/${newCode.id}`);
+      navigate('/'); // Redirige vers la page d'accueil
+    } else {
+      alert('Title and content are required!');
     }
   };
 
