@@ -52,9 +52,9 @@ const CodeEditor = ({ code, setCode }) => {
           fullWidth
           value={code}
           onChange={(e) => setCode(e.target.value)}
-          style={{ backgroundColor: "#fff", color: "#fff" }}
+          style={{ backgroundColor: "#fff", color: "#000" }}
           InputProps={{
-            style: { color: "#fff" },
+            style: { color: "#000" },
           }}
         />
         {/* Affiche le nombre de lignes du code */}
